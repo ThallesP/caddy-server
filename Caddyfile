@@ -1,4 +1,23 @@
-:{$PORT}
+# Handle all domains
+:{$PORT} {
+    # Only allow specific IP to reverse proxy
+    @allowed {
+        remote_ip {$ALLOWED_PROXY_IP}
+    }
+    
+    # Handle requests from allowed IP
+    handle @allowed {
+        reverse_proxy localhost:8080 {
+            # Forward the real client IP
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-For {remote_host}
+            header_up X-Forwarded-Proto {scheme}
+            header_up Host {host}
+        }
+    }
 
-root * /srv
-file_server
+    # Reject all other requests
+    handle {
+        respond 403
+    }
+}
