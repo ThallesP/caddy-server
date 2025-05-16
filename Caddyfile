@@ -1,6 +1,7 @@
 {
-    # Trust the X-Real-IP header from your proxy
-    trusted_proxies private_ranges
+    # Trust private IP ranges and explicitly specify which headers to check
+    trusted_proxies static private_ranges
+    client_ip_headers X-Real-IP
 }
 
 :{$PORT} {
