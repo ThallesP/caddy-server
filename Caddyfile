@@ -6,7 +6,7 @@
     
     # Handle requests from allowed IP
     handle @allowed {
-        reverse_proxy {$PROXY_TO}
+        reverse_proxy {$PROXY_IP}:{$PROXY_PORT}
     }
 
     # Reject all other requests
