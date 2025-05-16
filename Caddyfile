@@ -1,8 +1,11 @@
-:{$PORT} {
-    # Trust private IP ranges and explicitly specify which headers to check
-    trusted_proxies static private_ranges
-    client_ip_headers X-Forwarded-For X-Real-IP
+{
+    servers {
+        trusted_proxies static private_ranges
+        client_ip_headers X-Forwarded-For X-Real-IP
+    }
+}
 
+:{$PORT} {
     # Only allow specific IP to reverse proxy
     @allowed {
         client_ip {env.ALLOWED_PROXY_IP}
