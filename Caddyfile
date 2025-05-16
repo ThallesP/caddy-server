@@ -7,7 +7,7 @@
     
     # Handle requests from allowed IP
     handle @allowed {
-        reverse_proxy localhost:8080 {
+        reverse_proxy n8n.railway.internal:5678 {
             # Forward the real client IP
             header_up X-Real-IP {remote_host}
             header_up X-Forwarded-For {remote_host}
