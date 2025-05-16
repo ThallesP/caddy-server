@@ -1,5 +1,4 @@
 {
-    debug
     servers {
         trusted_proxies static private_ranges
         client_ip_headers X-Real-IP
@@ -14,13 +13,7 @@
     
     # Handle requests from allowed IP
     handle @allowed {
-        reverse_proxy n8n.railway.internal:5678 {
-            # Forward the real client IP
-            header_up X-Real-IP {remote_host}
-            header_up X-Forwarded-For {remote_host}
-            header_up X-Forwarded-Proto {scheme}
-            header_up Host {host}
-        }
+        reverse_proxy n8n.railway.internal:5678
     }
 
     # Reject all other requests
