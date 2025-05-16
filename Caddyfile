@@ -1,4 +1,4 @@
-:{$CADDY_PORT} {
+:{$PORT} {
     # Only allow specific IP to reverse proxy
     @allowed {
         header X-Real-IP {$ALLOWED_IP}
