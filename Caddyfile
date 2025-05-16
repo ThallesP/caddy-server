@@ -1,8 +1,12 @@
-# Handle all domains
+{
+    # Trust the X-Real-IP header from your proxy
+    trusted_proxies private_ranges
+}
+
 :{$PORT} {
     # Only allow specific IP to reverse proxy
     @allowed {
-        remote_ip {env.ALLOWED_PROXY_IP}
+        client_ip {env.ALLOWED_PROXY_IP}
     }
     
     # Handle requests from allowed IP
