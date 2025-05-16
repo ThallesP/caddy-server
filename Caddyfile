@@ -2,7 +2,7 @@
 :{$PORT} {
     # Only allow specific IP to reverse proxy
     @allowed {
-        remote_ip {$ALLOWED_PROXY_IP}
+        remote_ip {env.ALLOWED_PROXY_IP}
     }
     
     # Handle requests from allowed IP
