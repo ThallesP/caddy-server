@@ -1,4 +1,5 @@
 {
+    debug
     servers {
         trusted_proxies static private_ranges
         client_ip_headers X-Real-IP
