@@ -1,11 +1,7 @@
-{
-	debug
-}
-
 :{$PORT} {
     # Only allow specific IP to reverse proxy
     @allowed {
-        client_ip {$ALLOWED_PROXY_IP}
+        X-Real-IP {$ALLOWED_PROXY_IP}
     }
     
     # Handle requests from allowed IP
