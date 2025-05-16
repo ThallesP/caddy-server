@@ -5,6 +5,10 @@
     }
 }
 
+{
+	debug
+}
+
 :{$PORT} {
     # Only allow specific IP to reverse proxy
     @allowed {
