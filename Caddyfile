@@ -1,12 +1,12 @@
 :{$PORT} {
     # Only allow specific IP to reverse proxy
     @allowed {
-        header X-Real-IP {$ALLOWED_PROXY_IP}
+        header X-Real-IP {$ALLOWED_IP}
     }
     
     # Handle requests from allowed IP
     handle @allowed {
-        reverse_proxy n8n.railway.internal:5678
+        reverse_proxy {$PROXY_TO}
     }
 
     # Reject all other requests
